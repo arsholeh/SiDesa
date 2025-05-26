@@ -19,10 +19,10 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('birth_place', 100);
             $table->text('address');
-            $table->string('religion', 50);
+            $table->string('religion', 50)->nullable();
             $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed']);
-            $table->string('occupation', 100);
-            $table->string('phone', 15);
+            $table->string('occupation', 100)->nullable();
+            $table->string('phone', 15)->nullable();
             $table->enum('status', ['active', 'moved', 'deceased']);
             $table->timestamps();
         });
