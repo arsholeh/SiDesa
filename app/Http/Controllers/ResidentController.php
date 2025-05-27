@@ -41,4 +41,34 @@ class ResidentController extends Controller
 
         return redirect('/resident')->with('success', 'Berhasil menambahkan data');
     }
+
+    public function edit($id)
+    {
+        $resident = Resident::findOrFail($id);
+        return view('pages.resident.edit', [
+            'resident' => $resident
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'nik' => ['required', 'min:16', 'max:16'],
+            'name' => ['required', 'max:100'],
+            'gender' => ['required', Rule::in(['male', 'female'])],
+            'birth_date' => ['required', 'string'],
+            'birth_place' => ['required', 'max:100'],
+            'address' => ['required', 'max:700'],
+            'religion' => ['nullable', 'max:50'],
+            'marital_status' => ['required', Rule::in(['single', 'married', 'divorced', 'widowed'])],
+            'occupation' => ['nullable', 'max:15'],
+            'phone' => ['nullable', 'max:15'],
+            'status' => ['required', Rule::in(['active', 'moved', 'deceased'])]
+        ]);
+
+        $resident = Resident::findOrFail($id);
+        $resident->update($validatedData);
+
+        return redirect('/resident')->with('success', 'Berhasil menambahkan data');
+    }
 }
