@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 </head>
 
@@ -52,7 +52,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; SiDesa 2021</span>
                     </div>
                 </div>
             </footer>
@@ -90,21 +90,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="js/jquery.easing.min.js"></script>
+    <script src="{{ asset('js/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="js/Chart.min.js"></script>
+    <script src="{{ asset('js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/chart-area-demo.js"></script>
-    <script src="js/chart-pie-demo.js"></script>
+    <script src="{{ asset('js/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('js/chart-pie-demo.js') }}"></script>
 
 </body>
 
