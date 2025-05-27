@@ -41,6 +41,7 @@
               <tbody>
                 @foreach ($residents as $item)
                 <tr>
+                  <td>{{$loop->iteration}}</td>
                   <td>{{ $item->nik }}</td>
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->gender }}</td>
@@ -56,13 +57,14 @@
                       <a href="/resident/{{ $item->id }}" class="btn btn-sm btn-warning d-inline-block mr-1">
                       <i class="fas fa-pen"></i>
                       </a>
-                      <a href="/resident/{{ $item->id }}" class="btn btn-sm btn-danger">
+                      <button href="/resident/{{ $item->id }}" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#ConfirmationDelete-{{ $item->id }}">
                         <i class="fas fa-eraser"></i>
-                        </a>
+                        </button>
                     </div>
                     
                   </td>
                 </tr>
+                @include('pages.resident.confirmation-delete')
                 @endforeach
               </tbody>
             @endif
