@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -49,5 +51,28 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function registerView()
+    {
+        return view('pages.auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'min:6'],
+        ]);
+
+        $user = new User();
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->role_id = 2; // Regular user or pending approval
+        $user->saveOrFail();
+
+        return redirect('/')->with('success', 'Berhasil mendaftarkan akun, menunggu persetujuan admin');
     }
 }

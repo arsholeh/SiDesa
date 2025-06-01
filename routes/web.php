@@ -12,6 +12,8 @@ Route::get('/dashboard', function () {
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('/register', [AuthController::class, 'registerView']);
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/resident', [ResidentController::class, 'index']);
 Route::get('/resident/create', [ResidentController::class, 'create']);

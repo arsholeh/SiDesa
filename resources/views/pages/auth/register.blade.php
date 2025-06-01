@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SiDesa - Login</title>
+    <title>SiDesa - Registrasi</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -36,10 +36,18 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Registrasi</h1>
                                     </div>
-                                    <form action="/login" method="POST" class="user">
+                                    <form action="/register" method="POST" class="user">
                                         @csrf
+                                        @method('POST')
+                                        <div class="form-group">
+                                          <input type="text" class="form-control form-control-user"
+                                              id="exampleInputName" 
+                                              name="name"
+                                              aria-describedby="emailHelp"
+                                              placeholder="Full Name">
+                                        </div>
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" 
@@ -54,11 +62,13 @@
                                                 placeholder="Password">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Login
+                                            Simpan
                                         </button>
                                     </form>
+                                    <hr>
+                                    <hr>
                                     <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
+                                        <a class="small" href="/">Login</a>
                                     </div>
                                 </div>
                             </div>
