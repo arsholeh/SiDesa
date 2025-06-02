@@ -12,6 +12,10 @@ class AuthController extends Controller
 
     public function login()
     {
+
+        if (Auth::check()) {
+            return back();
+        }
         return view('pages.auth.login');
     }
 
@@ -44,6 +48,10 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+
+        if (!Auth::check()) {
+            return redirect('/');
+        }
         Auth::logout();
 
         $request->session()->invalidate();
@@ -55,6 +63,9 @@ class AuthController extends Controller
 
     public function registerView()
     {
+        if (Auth::check()) {
+            return back();
+        }
         return view('pages.auth.register');
     }
 
