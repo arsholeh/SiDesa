@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ResidentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ResidentController;
 
 
 Route::get('/dashboard', function () {
@@ -21,3 +22,7 @@ Route::get('/resident/{id}', [ResidentController::class, 'edit'])->middleware('r
 Route::post('/resident', [ResidentController::class, 'store'])->middleware('role:Admin');
 Route::put('/resident/{id}', [ResidentController::class, 'update'])->middleware('role:Admin');
 Route::delete('/resident/{id}', [ResidentController::class, 'destroy'])->middleware('role:Admin');
+
+
+Route::get('/account-request', [UserController::class, 'index']);
+Route::post('/account-request/approve/{id}', [UserController::class, 'approve']);

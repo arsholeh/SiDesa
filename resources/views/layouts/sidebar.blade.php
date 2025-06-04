@@ -11,6 +11,11 @@
               'path' => 'dashboard',
               'icon' => 'fas fa-fw fa-tachometer-alt'
             ],
+            (object) [
+              'title' => 'Permintaan Akun',
+              'path' => 'account-request',
+              'icon' => 'fas fa-fw fa-user'
+            ],
             ],
         2 => [
             (object) [
