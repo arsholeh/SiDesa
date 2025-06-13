@@ -24,6 +24,7 @@ Route::put('/resident/{id}', [ResidentController::class, 'update'])->middleware(
 Route::delete('/resident/{id}', [ResidentController::class, 'destroy'])->middleware('role:Admin');
 
 Route::get('/account-list', [UserController::class, 'account_list'])->middleware('role:Admin');
+Route::post('/account-list/approve/{id}', [UserController::class, 'account_list_status'])->middleware('role:Admin');
 
 Route::get('/account-request', [UserController::class, 'index'])->middleware('role:Admin');
 Route::post('/account-request/approve/{id}', [UserController::class, 'approve'])->middleware('role:Admin');

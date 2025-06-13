@@ -27,4 +27,29 @@ class UserController extends Controller
 
         return back()->with('success', $for == 'approve' ? 'Berhasil menyetujui akun' : 'Berhasil menolak akun');
     }
+
+    public function account_list()
+    {
+        $users = User::where('role_id', 2)->where('status', '!=', 'submitted')->get();
+
+        return view('pages.account-list.index', [
+            'users' => $users
+        ]);
+    }
+
+    public function account_list_status(Request $request, $id)
+    {
+        $for = $request->input('for');
+
+        $user = User::findOrFail($id);
+
+        $user->status = $for == 'activate' ? 'approved' : 'rejected';
+        $user->save();
+
+        if ($for == 'activate') {
+            return back()->with('success', 'Berhasil mengaktifkan akun');
+        } elseif ($for == 'deactivate') {
+            return back()->with('success', 'Berhasil menonaktifkan akun');
+        }
+    }
 }
