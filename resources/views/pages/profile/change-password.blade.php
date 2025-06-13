@@ -8,13 +8,23 @@
   </div> 
 
   @if (session('success'))
-         <script>
+        <script>
              Swal.fire({
             title: "Berhasil",
             text: "{{ session()->get('success') }}",
             icon: "success"
                 });
-          </script>
+        </script>
+  @endif
+
+   @if (session('error'))
+        <script>
+             Swal.fire({
+            title: "Gagal!",
+            text: "{{ session()->get('error') }}",
+            icon: "error"
+                });
+        </script>
   @endif
 
   <div class="row">
@@ -34,7 +44,7 @@
               @enderror
             </div>
             <div class="form-group mb-3">
-              <label for="new_password">Password Lama</label>
+              <label for="new_password">Password Baru</label>
               <input type="password" id="new_password" name="new_password"  class="form-control @error('new_password')
                 is-invalid
               @enderror">
