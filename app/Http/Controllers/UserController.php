@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -18,6 +19,10 @@ class UserController extends Controller
 
     public function approve(Request $request, $id)
     {
+        $request->validate([
+            'for' => ['required', Rule::in(['approve', 'reject'])]
+        ]);
+
         $for = $request->input('for');
 
         $user = User::findOrFail($id);
@@ -39,6 +44,9 @@ class UserController extends Controller
 
     public function account_list_status(Request $request, $id)
     {
+        $request->validate([
+            'for' => ['required', Rule::in(['activate', 'deactivate'])]
+        ]);
         $for = $request->input('for');
 
         $user = User::findOrFail($id);
