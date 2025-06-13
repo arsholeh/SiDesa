@@ -7,10 +7,21 @@
     <h1 class="h3 mb-0 text-gray-800">Detail Profile</h1>
   </div> 
 
+  @if (session('success'))
+         <script>
+             Swal.fire({
+            title: "Berhasil",
+            text: "{{ session()->get('success') }}",
+            icon: "success"
+                });
+          </script>
+  @endif
+
   <div class="row">
     <div class="col">
       <form action="/profile/{{ Auth::user()->id}}" method="post">
         @csrf
+        @method('POST')
         <div class="card">
           <div class="card-body">
             <div class="form-group mb-3">
