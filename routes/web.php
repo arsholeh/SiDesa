@@ -28,3 +28,6 @@ Route::post('/account-list/approve/{id}', [UserController::class, 'account_list_
 
 Route::get('/account-request', [UserController::class, 'index'])->middleware('role:Admin');
 Route::post('/account-request/approve/{id}', [UserController::class, 'approve'])->middleware('role:Admin');
+
+
+Route::get('/profile', [UserController::class, 'profile_view'])->middleware('role:Admin,User');

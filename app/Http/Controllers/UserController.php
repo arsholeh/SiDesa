@@ -60,4 +60,9 @@ class UserController extends Controller
             return back()->with('success', 'Berhasil menonaktifkan akun');
         }
     }
+
+    public function profile_view()
+    {
+        return view('pages.profile.index');
+    }
 }
