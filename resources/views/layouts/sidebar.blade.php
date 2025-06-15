@@ -8,7 +8,7 @@
             ],
             (object) [
               'title' => 'Penduduk',
-              'path' => 'dashboard',
+              'path' => 'resident',
               'icon' => 'fas fa-fw fa-tachometer-alt'
             ],
             (object) [
