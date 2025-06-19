@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Resident;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,16 +13,19 @@ class UserController extends Controller
     public function index()
     {
         $users = User::where('status', 'submitted')->get();
+        $residents = Resident::where('user_id', null)->get();
 
         return view('pages.account-request.index', [
-            'users' => $users
+            'users' => $users,
+            'residents' => $residents
         ]);
     }
 
     public function approve(Request $request, $id)
     {
         $request->validate([
-            'for' => ['required', Rule::in(['approve', 'reject'])]
+            'for' => ['required', Rule::in(['approve', 'reject'])],
+            'user_id' => ['nullable', 'exists:residents,id']
         ]);
 
         $for = $request->input('for');
@@ -30,6 +34,14 @@ class UserController extends Controller
 
         $user->status = $for == 'approve' ? 'approved' : 'rejected';
         $user->save();
+
+        $residentId = $request->input('resident_id');
+
+        if ($request->has('resident_id') && isset($residentId)) {
+            Resident::where('id', $request->input('resident_id'))->update([
+                'user_id' => $user->id
+            ]);
+        }
 
         return back()->with('success', $for == 'approve' ? 'Berhasil menyetujui akun' : 'Berhasil menolak akun');
     }
