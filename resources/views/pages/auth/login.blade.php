@@ -46,9 +46,13 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                                     </div>
-                                    <form action="/login" method="POST" class="user">
+                                    <form action="/login" method="POST" class="user" onsubmit="
+                                    const submitBtn = document.getElementById('submitBtn');
+                                    submitBtn.disable = true;
+                                    submitBtn.textContent = 'Loading...'
+                                    ">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
@@ -63,12 +67,13 @@
                                                 name="password"
                                                 placeholder="Password">
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button id="submitBtn"type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
                                     </form>
+                                    <hr>
                                     <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
+                                        <a class="small" href="/register">Buat akun baru!</a>
                                     </div>
                                 </div>
                             </div>
