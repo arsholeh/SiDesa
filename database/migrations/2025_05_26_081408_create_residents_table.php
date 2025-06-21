@@ -23,7 +23,7 @@ return new class extends Migration
             $table->enum('marital_status', ['single', 'married', 'divorced', 'widowed']);
             $table->string('occupation', 100)->nullable();
             $table->string('phone', 15)->nullable();
-            $table->enum('status', ['active', 'moved', 'deceased']);
+            $table->enum('status', ['active', 'moved', 'deceased'])->default('active');
             $table->timestamps();
         });
     }
