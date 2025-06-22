@@ -9,7 +9,7 @@
 
   <div class="row">
     <div class="col">
-      <form action="/comlaint" method="post" enctype="multipart/form-data">
+      <form action="/complaint" method="post" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="card">
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group mb-3">
               <label for="photo_proof">Bukti Foto</label>
-              <input type="text" id="photo_proof" name="photo_proof" class="form-control @error('photo_proof')
+              <input type="file" id="photo_proof" name="photo_proof" class="form-control @error('photo_proof')
                 is-invalid
               @enderror">
               @error('photo_proof')
