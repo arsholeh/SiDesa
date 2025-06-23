@@ -79,4 +79,14 @@ class ComplaintController extends Controller
 
         return redirect('/complaint')->with('success', 'Berhasil mengubah aduan');
     }
+
+    public function destroy($id)
+    {
+        $complaint = Complaint::findOrFail($id);
+        if (isset($complaint->photo_proof)) {
+            Storage::delete($complaint->photo_proof);
+        }
+        $complaint->delete();
+        return redirect('/complaint')->with('succes', 'Berhasil menghapus aduan');
+    }
 }
