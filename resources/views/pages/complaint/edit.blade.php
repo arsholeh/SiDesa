@@ -9,7 +9,7 @@
 
   <div class="row">
     <div class="col">
-      <form action="/complaint/{{ $complaint->id }}" method="post">
+      <form action="/complaint/{{ $complaint->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="card">

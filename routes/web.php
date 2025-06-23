@@ -41,3 +41,4 @@ Route::get('/complaint', [ComplaintController::class, 'index'])->middleware('rol
 Route::get('/complaint/create', [ComplaintController::class, 'create'])->middleware('role:User');
 Route::post('/complaint', [ComplaintController::class, 'store'])->middleware('role:User');
 Route::get('/complaint/{id}', [ComplaintController::class, 'edit'])->middleware('role:User');
+Route::put('/complaint/{id}', [ComplaintController::class, 'update'])->middleware('role:User');
