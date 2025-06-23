@@ -43,7 +43,7 @@
                   <td>{{ $item->status_label }}</td>
                   <td>
                     @if (isset($item->photo_proof))
-                      <img src="{{ $item->photo_proof }}" alt="Foto Bukti" style="max-width: 300px;">
+                      <a href="{{ 'storage/' . $item->photo_proof }}"><img src="{{ 'storage/' . $item->photo_proof }}" alt="Foto Bukti" style="max-width: 250px;"></a>
                     @else
                       Tidak Ada  
                     @endif

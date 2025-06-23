@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('content');
             $table->enum('status', ['new', 'processing', 'completed'])->default('new');
             $table->string('photo_proof')->nullable();
-            $table->timestamp('report_data')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('report_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
 
             $table->foreign('resident_id')->references('id')->on('residents')->onDelete('cascade');
