@@ -43,4 +43,12 @@ class ComplaintController extends Controller
         $complaint->save();
         return redirect('/complaint')->with('success', 'Berhasil membuat aduan');
     }
+
+    public function edit($id)
+    {
+        $complaint = Complaint::findOrFail($id);
+        return view('pages.complaint.edit', [
+            'complaint' => $complaint
+        ]);
+    }
 }
